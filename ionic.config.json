@@ -1,0 +1,7 @@
+{
+  "name": "suidlanders",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
