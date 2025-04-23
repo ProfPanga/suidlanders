@@ -1,0 +1,94 @@
+<ion-header>
+   <ion-toolbar>
+     <ion-title>General User Info</ion-title>
+   </ion-toolbar>
+ </ion-header>
+ 
+ <ion-content class="ion-padding">
+   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+     <ion-item>
+       <ion-label position="floating">Name</ion-label>
+       <ion-input formControlName="name"></ion-input>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">Surname</ion-label>
+       <ion-input formControlName="surname"></ion-input>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">ID Number</ion-label>
+       <ion-input type="text" formControlName="idNumber"></ion-input>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">Age</ion-label>
+       <ion-input type="number" formControlName="age"></ion-input>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">Sex</ion-label>
+       <ion-select formControlName="sex">
+         <ion-select-option value="male">Male</ion-select-option>
+         <ion-select-option value="female">Female</ion-select-option>
+         <ion-select-option value="other">Other</ion-select-option>
+       </ion-select>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">Overall Health</ion-label>
+       <ion-select formControlName="overallHealth">
+         <ion-select-option value="good">Good</ion-select-option>
+         <ion-select-option value="fair">Fair</ion-select-option>
+         <ion-select-option value="critical">Critical</ion-select-option>
+       </ion-select>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">Work Experience</ion-label>
+       <ion-textarea formControlName="workExperience"></ion-textarea>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label position="floating">Dependants</ion-label>
+       <ion-input type="number" formControlName="dependants"></ion-input>
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label>Copy of ID (optional)</ion-label>
+       <input type="file" (change)="onFileChange($event, 'idCopy')" />
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label>Marriage Certificate (optional)</ion-label>
+       <input type="file" (change)="onFileChange($event, 'marriageCert')" />
+     </ion-item>
+ 
+     <ion-item>
+       <ion-label>Other Documents (optional)</ion-label>
+       <input type="file" (change)="onFileChange($event, 'otherDocs')" multiple />
+     </ion-item>
+ 
+     <ion-button expand="block" type="submit" [disabled]="!userForm.valid">
+       Preview
+     </ion-button>
+   </form>
+ 
+   <div *ngIf="submitted">
+     <h2>Preview</h2>
+     <div id="report-preview">
+       <h3>General User Information</h3>
+       <p><strong>Name:</strong> {{ formData.name }} {{ formData.surname }}</p>
+       <p><strong>ID Number:</strong> {{ formData.idNumber }}</p>
+       <p><strong>Age:</strong> {{ formData.age }}</p>
+       <p><strong>Sex:</strong> {{ formData.sex }}</p>
+       <p><strong>Overall Health:</strong> {{ formData.overallHealth }}</p>
+       <p><strong>Work Experience:</strong> {{ formData.workExperience }}</p>
+       <p><strong>Dependants:</strong> {{ formData.dependants }}</p>
+       <p *ngIf="formData.idCopyName"><strong>ID Copy:</strong> {{ formData.idCopyName }}</p>
+       <p *ngIf="formData.marriageCertName"><strong>Marriage Certificate:</strong> {{ formData.marriageCertName }}</p>
+       <p *ngIf="formData.otherDocsNames"><strong>Other Documents:</strong> {{ formData.otherDocsNames.join(', ') }}</p>
+     </div>
+     <ion-button expand="block" (click)="exportToHtml()">Export as HTML</ion-button>
+   </div>
+ </ion-content>
