@@ -6,6 +6,9 @@
  
  <ion-content class="ion-padding">
    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <!-- Personal Details -->
+
      <ion-item>
        <ion-label position="floating">Name</ion-label>
        <ion-input formControlName="name"></ion-input>
@@ -20,6 +23,41 @@
        <ion-label position="floating">ID Number</ion-label>
        <ion-input type="text" formControlName="idNumber"></ion-input>
      </ion-item>
+
+     <!-- Contact Information -->
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Phone Number</ion-label>
+      <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+    </ion-item>
+
+    <!-- Address Details -->
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-input formControlName="city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Province</ion-label>
+      <ion-input formControlName="province"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Postal Code</ion-label>
+      <ion-input formControlName="postalCode"></ion-input>
+    </ion-item>
+
+    <!-- Demographics -->
  
      <ion-item>
        <ion-label position="floating">Age</ion-label>
@@ -34,6 +72,8 @@
          <ion-select-option value="other">Other</ion-select-option>
        </ion-select>
      </ion-item>
+
+     <!-- Health & Experience -->
  
      <ion-item>
        <ion-label position="floating">Overall Health</ion-label>
@@ -54,6 +94,8 @@
        <ion-input type="number" formControlName="dependants"></ion-input>
      </ion-item>
  
+     <!-- Documents -->
+
      <ion-item>
        <ion-label>Copy of ID (optional)</ion-label>
        <input type="file" (change)="onFileChange($event, 'idCopy')" />
@@ -80,6 +122,9 @@
        <h3>General User Information</h3>
        <p><strong>Name:</strong> {{ formData.name }} {{ formData.surname }}</p>
        <p><strong>ID Number:</strong> {{ formData.idNumber }}</p>
+       <p><strong>Email:</strong> {{ formData.email }}</p>
+       <p><strong>Phone Number:</strong> {{ formData.phoneNumber }}</p>
+       <p><strong>Address:</strong> {{ formData.address }}, {{ formData.city }}, {{ formData.province }}, {{ formData.postalCode }}</p>
        <p><strong>Age:</strong> {{ formData.age }}</p>
        <p><strong>Sex:</strong> {{ formData.sex }}</p>
        <p><strong>Overall Health:</strong> {{ formData.overallHealth }}</p>
